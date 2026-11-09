@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Developer Portfolio</title>
+<meta name="description" content="Landing pages, online stores and booking sites built with HTML, CSS and JavaScript.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e1116;--card:#171c24;--ink:#f2f5f9;--muted:#93a0b2;--acc:#6ee7b7;--line:#262e3a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{padding:90px 0 50px}
+.tag{display:inline-block;color:var(--acc);font-weight:700;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;max-width:760px;margin-bottom:18px}
+h1 span{color:var(--acc)}
+header p{color:var(--muted);font-size:1.1rem;max-width:560px}
+.skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+.skills span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.88rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;padding-bottom:70px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.card:hover{transform:translateY(-6px);border-color:var(--acc)}
+.thumb{height:190px;display:grid;place-items:center;font-size:4.5rem}
+.body{padding:24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.body small{color:var(--acc);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.75rem}
+h2{font-size:1.3rem;font-weight:800}
+.body p{color:var(--muted);font-size:.95rem;flex:1}
+.go{font-weight:700;margin-top:8px}
+.card:hover .go{color:var(--acc)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem}
+@media(max-width:720px){.grid{grid-template-columns:1fr}header{padding:60px 0 36px}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="tag">Front-end developer</span>
+    <h1>I build fast, clean websites that <span>turn visitors into customers</span></h1>
+    <p>Landing pages, online stores and booking sites. Responsive on every screen, with working carts, forms and calculators.</p>
+    <div class="skills"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive design</span><span>Accessibility</span></div>
+  </header>
+  <main class="grid">
+    <a class="card" href="site2-pizza/">
+      <div class="thumb" style="background:linear-gradient(135deg,#e5482d,#7a1f10)">🍕</div>
+      <div class="body"><small>Food ordering</small><h2>Forno — pizza delivery</h2><p>Pizza builder with sizes, crusts and toppings, menu filters, cart, promo codes, checkout and live order tracking.</p><span class="go">View live site →</span></div>
+    </a>
+    <a class="card" href="site3-shop/">
+      <div class="thumb" style="background:linear-gradient(135deg,#dce8d6,#9cc3a5)">🪴</div>
+      <div class="body"><small>E-commerce</small><h2>Verde — plant shop</h2><p>Product catalog with filters, sorting and search, wishlist, quick view, cart with free-shipping meter and checkout.</p><span class="go">View live site →</span></div>
+    </a>
+    <a class="card" href="site4-services/">
+      <div class="thumb" style="background:linear-gradient(135deg,#1570ef,#0b3d8f)">✨</div>
+      <div class="body"><small>Service business</small><h2>Sparkle — home cleaning</h2><p>Landing page with an instant price calculator, recurring-visit discounts and a validated booking form.</p><span class="go">View live site →</span></div>
+    </a>
+    <a class="card" href="site1-coffee/">
+      <div class="thumb" style="background:linear-gradient(135deg,#e9b98f,#7a3d1b)">☕</div>
+      <div class="body"><small>Landing page · RU</small><h2>Zerno — coffee shop</h2><p>Coffee shop landing page with a filterable menu, pre-order cart and order form. Russian-language version.</p><span class="go">View live site →</span></div>
+    </a>
+  </main>
+  <footer>Demo projects built for portfolio purposes. All brands are fictional.</footer>
+</div>
+</body>
+</html>

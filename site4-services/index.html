@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sparkle — home cleaning you can book in 60 seconds</title>
+<meta name="description" content="Sparkle home cleaning: vetted cleaners, transparent pricing and instant online booking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f9fc;--card:#fff;--ink:#0f2233;--muted:#5b6f80;--blue:#1570ef;--blue-d:#0f56c0;--sky:#e3f0ff;--mint:#12b886;--line:#dde7ef;--r:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3{line-height:1.15;font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,4vw,2.5rem);margin-bottom:10px}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+section{padding:76px 0}
+.sub{color:var(--muted);max-width:560px;margin-bottom:36px}
+.center{text-align:center}.center .sub{margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:14px;border:0;background:var(--blue);color:#fff;font-weight:700;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(21,112,239,.6)}
+.btn.white{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.white:hover{box-shadow:none;border-color:var(--ink)}
+.btn.full{width:100%}
+:focus-visible{outline:3px solid #8ec0ff;outline-offset:2px}
+
+header{position:sticky;top:0;z-index:30;background:rgba(245,249,252,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-weight:800;font-size:1.35rem;display:flex;align-items:center;gap:8px}
+.logo i{width:30px;height:30px;border-radius:10px;background:var(--blue);display:grid;place-items:center;font-style:normal;font-size:1rem}
+.menu{display:flex;gap:26px;align-items:center;list-style:none;font-weight:500}
+.menu a:not(.btn):hover{color:var(--blue)}
+.menu .btn{padding:10px 20px}
+.burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;font-size:1.5rem}
+
+.hero{padding:64px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:var(--blue-d);font-weight:700;font-size:.85rem;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+h1{font-size:clamp(2.3rem,5.4vw,3.9rem);margin-bottom:18px}
+h1 span{color:var(--blue)}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:470px;margin-bottom:28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:26px;margin-top:38px;flex-wrap:wrap}
+.trust b{display:block;font-size:1.6rem;font-weight:800}
+.trust span{font-size:.88rem;color:var(--muted)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 30px 60px -30px rgba(15,34,51,.25)}
+.checks{list-style:none;display:grid;gap:14px}
+.checks li{display:flex;gap:12px;align-items:center;padding:14px;border-radius:14px;background:var(--bg);font-weight:500}
+.checks li i{width:26px;height:26px;border-radius:50%;background:var(--mint);color:#fff;display:grid;place-items:center;font-style:normal;font-size:.8rem;flex:none}
+.next{margin-top:18px;padding:16px;border-radius:14px;background:var(--ink);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.next small{color:#9fb4c6;display:block}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:.2s}
+.svc:hover{transform:translateY(-4px);border-color:var(--blue)}
+.svc .ic{width:54px;height:54px;border-radius:16px;background:var(--sky);display:grid;place-items:center;font-size:1.6rem;margin-bottom:18px}
+.svc h3{font-size:1.15rem;margin-bottom:6px}
+.svc p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+.svc{display:block}
+.svc b{color:var(--blue);display:block}
+.more{font-weight:700;font-size:.9rem;margin-top:10px;display:inline-block}
+
+.calc{background:var(--ink);color:#fff;border-radius:32px;padding:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px}
+.calc .sub{color:#9fb4c6;margin-bottom:24px}
+.lbl{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#9fb4c6;margin:20px 0 10px;display:flex;justify-content:space-between}
+.lbl b{color:#fff}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{padding:10px 16px;border-radius:12px;border:1px solid #2b4257;background:none;color:#fff;cursor:pointer;font-weight:500;transition:.15s}
+.opt:hover{border-color:#5d7c97}
+.opt.on{background:var(--blue);border-color:var(--blue)}
+.opt small{opacity:.75}
+input[type=range]{width:100%;accent-color:var(--blue)}
+.quote{background:#17324a;border-radius:24px;padding:28px;align-self:start;position:sticky;top:90px}
+.quote .big{font-size:3.2rem;font-weight:800;line-height:1;margin:8px 0}
+.quote ul{list-style:none;margin:18px 0;display:grid;gap:8px;color:#c4d4e2;font-size:.95rem}
+.quote li{display:flex;justify-content:space-between;gap:10px}
+.quote .save{color:#63e6be}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:n}
+.st{counter-increment:n;padding:24px;border-radius:var(--r);background:var(--card);border:1px solid var(--line)}
+.st::before{content:counter(n);display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--blue);color:#fff;font-weight:800;margin-bottom:14px}
+.st p{color:var(--muted);font-size:.92rem;margin-top:4px}
+
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.rev .s{color:#f5a623;letter-spacing:2px;margin-bottom:8px}
+.rev footer{margin-top:14px;font-weight:700}.rev footer small{display:block;color:var(--muted);font-weight:400}
+
+.faq{max-width:760px;margin:0 auto}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:9px;height:9px;margin:5px 4px 0 0;border-right:2.5px solid var(--blue);border-bottom:2.5px solid var(--blue);transform:rotate(45deg);transition:.2s}
+details[open] summary::after{transform:rotate(-135deg);margin-top:10px}
+details p{color:var(--muted);margin-top:10px}
+
+.book{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:start}
+.sumcard{background:var(--sky);border-radius:var(--r);padding:24px;margin-top:20px}
+.sumcard div{display:flex;justify-content:space-between;padding:4px 0}
+.sumcard .t{font-weight:800;font-size:1.3rem;border-top:1px solid #bfd9f7;margin-top:8px;padding-top:10px}
+form{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:30px;display:grid;gap:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{font-weight:700;font-size:.88rem;display:block}
+.in{width:100%;margin-top:6px;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:#fff}
+.in.bad{border-color:#e03131}
+.err{color:#e03131;font-size:.8rem;font-weight:500;min-height:1.15em;display:block}
+.ok{display:none;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:50px 30px}
+.ok .e{font-size:3.5rem}
+.done form{display:none}.done .ok{display:block}
+
+footer.site{background:var(--ink);color:#9fb4c6;padding:44px 0;font-size:.92rem}
+.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot .logo{color:#fff;margin-bottom:8px}
+.reveal{opacity:0;transform:translateY(22px);transition:.6s ease}.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  section{padding:56px 0}
+  .hero .wrap,.calc,.book,.grid3,.revs{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .calc{padding:26px}.quote{position:static}
+  .burger{display:block}
+  .menu{display:none;position:absolute;left:0;right:0;top:70px;background:var(--bg);flex-direction:column;padding:22px;border-bottom:1px solid var(--line)}
+  .open .menu{display:flex}
+}
+@media(max-width:520px){.two,.steps{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo"><i>✨</i>Sparkle</a>
+    <button class="burger" aria-label="Menu" aria-expanded="false">☰</button>
+    <ul class="menu">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How it works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#book" class="btn">Book now</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill">★ 4.9 rating from 1,800+ homes</span>
+      <h1>A spotless home, <span>booked in 60 seconds</span></h1>
+      <p>Vetted, insured cleaners. Upfront pricing with no surprises. If you are not happy, we come back and re-clean for free.</p>
+      <div class="cta"><a href="#pricing" class="btn">Get an instant quote</a><a href="#services" class="btn white">See services</a></div>
+      <div class="trust">
+        <div><b data-count="12400">0</b><span>cleanings completed</span></div>
+        <div><b data-count="96">0</b><span>% rebook with us</span></div>
+        <div><b data-count="48">0</b><span>vetted cleaners</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3 style="margin-bottom:16px">Every visit includes</h3>
+      <ul class="checks">
+        <li><i>✓</i>Background-checked, insured cleaner</li>
+        <li><i>✓</i>All supplies and equipment</li>
+        <li><i>✓</i>Eco-friendly, pet-safe products</li>
+        <li><i>✓</i>24-hour happiness guarantee</li>
+      </ul>
+      <div class="next"><div><small>Next available slot</small><b id="slot"></b></div><a href="#book" class="btn" style="padding:10px 18px">Book</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="reveal">Services</h2>
+    <p class="sub reveal">Pick the level of clean that fits your home and schedule.</p>
+    <div class="grid3">
+      <a href="#pricing" class="svc reveal" data-type="0"><div class="ic">🧽</div><h3>Standard clean</h3><p>Dusting, vacuuming, mopping, kitchen and bathrooms. Perfect for regular upkeep.</p><b>From $89</b><span class="more">Calculate my price →</span></a>
+      <a href="#pricing" class="svc reveal" data-type="1"><div class="ic">🫧</div><h3>Deep clean</h3><p>Everything in Standard plus baseboards, inside cabinets, grout and behind furniture.</p><b>From $134</b><span class="more">Calculate my price →</span></a>
+      <a href="#pricing" class="svc reveal" data-type="2"><div class="ic">📦</div><h3>Move in / move out</h3><p>A top-to-bottom reset for empty homes — get your deposit back.</p><b>From $160</b><span class="more">Calculate my price →</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="process" style="padding-top:0">
+  <div class="wrap center">
+    <h2 class="reveal">How it works</h2>
+    <p class="sub reveal">From quote to clean home in four simple steps.</p>
+    <div class="steps" style="text-align:left">
+      <div class="st reveal"><h3>Get a quote</h3><p>Use the calculator below to see your exact price.</p></div>
+      <div class="st reveal"><h3>Pick a time</h3><p>Choose a date and arrival window that suits you.</p></div>
+      <div class="st reveal"><h3>We clean</h3><p>Your cleaner arrives with everything needed.</p></div>
+      <div class="st reveal"><h3>Relax</h3><p>Pay after the job is done. Rate your clean.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="padding-top:0">
+  <div class="wrap">
+    <div class="calc">
+      <div>
+        <h2>Instant price calculator</h2>
+        <p class="sub">Adjust the options — the price updates live. No calls, no hidden fees.</p>
+        <div class="lbl">Type of clean</div><div class="opts" id="cType"></div>
+        <div class="lbl">Bedrooms <b id="bedV"></b></div><input type="range" id="beds" min="1" max="6" value="2" aria-label="Bedrooms">
+        <div class="lbl">Bathrooms <b id="bathV"></b></div><input type="range" id="baths" min="1" max="4" value="1" aria-label="Bathrooms">
+        <div class="lbl">Extras</div><div class="opts" id="cExtra"></div>
+        <div class="lbl">How often</div><div class="opts" id="cFreq"></div>
+      </div>
+      <aside class="quote" aria-live="polite">
+        <span style="color:#9fb4c6">Your estimate</span>
+        <div class="big" id="qPrice"></div>
+        <span style="color:#9fb4c6" id="qTime"></span>
+        <ul id="qList"></ul>
+        <a href="#book" class="btn full">Book this clean</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="book" style="padding-top:0">
+  <div class="wrap book">
+    <div>
+      <h2>Book your clean</h2>
+      <p class="sub" style="margin-bottom:0">This is the clean you set up in the calculator above. Pick a date and pay only after the job is done.</p>
+      <div class="sumcard" id="summary"></div>
+    </div>
+    <div id="bookBox">
+      <form id="form" novalidate>
+        <div class="two">
+          <label>Full name<input class="in" name="fname" autocomplete="name"><span class="err"></span></label>
+          <label>Phone<input class="in" name="phone" type="tel" autocomplete="tel"><span class="err"></span></label>
+        </div>
+        <label>Email<input class="in" name="email" type="email" autocomplete="email"><span class="err"></span></label>
+        <label>Address<input class="in" name="addr" autocomplete="street-address"><span class="err"></span></label>
+        <div class="two">
+          <label>Date<input class="in" name="date" type="date"><span class="err"></span></label>
+          <label>Arrival window<select class="in" name="time"><option>8:00 – 10:00</option><option>10:00 – 12:00</option><option>12:00 – 14:00</option><option>14:00 – 16:00</option><option>16:00 – 18:00</option></select><span class="err"></span></label>
+        </div>
+        <button class="btn full" id="submit">Confirm booking</button>
+      </form>
+      <div class="ok" role="status"><div class="e">🎉</div><h2>You are booked!</h2><p id="okText" style="color:var(--muted);margin:10px 0 22px"></p><button class="btn white" id="again">Make another booking</button></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2 class="reveal">Loved by busy people</h2>
+    <p class="sub reveal">Real feedback from our regular customers.</p>
+    <div class="revs">
+      <blockquote class="rev reveal"><div class="s">★★★★★</div><p>Booked on Tuesday night, the flat was spotless by Wednesday afternoon. The price matched the quote exactly.</p><footer>Emily R.<small>Weekly standard clean</small></footer></blockquote>
+      <blockquote class="rev reveal"><div class="s">★★★★★</div><p>The move-out clean got us our full deposit back. They even cleaned inside the oven better than I ever have.</p><footer>James T.<small>Move-out clean</small></footer></blockquote>
+      <blockquote class="rev reveal"><div class="s">★★★★★</div><p>Same cleaner every two weeks, always on time, and our dog adores her. Could not recommend more.</p><footer>Priya S.<small>Bi-weekly clean</small></footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="center"><h2 class="reveal">Questions &amp; answers</h2><p class="sub reveal">Everything you need to know before booking.</p></div>
+    <div class="faq">
+      <details><summary>Do I need to be home?</summary><p>No. Many customers leave a key or door code. You get a message when the cleaner arrives and when the job is finished.</p></details>
+      <details><summary>Do cleaners bring their own supplies?</summary><p>Yes — all products and equipment are included. If you prefer your own products, just tell us in the booking notes.</p></details>
+      <details><summary>Can I reschedule or cancel?</summary><p>Free of charge up to 24 hours before your appointment.</p></details>
+      <details><summary>What if I am not satisfied?</summary><p>Tell us within 24 hours and we will send a cleaner back to fix it at no cost.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap foot"><div><div class="logo"><i>✨</i>Sparkle</div>Home cleaning, made simple.</div><div>+1 (555) 019-4400<br>hello@sparkle.example</div><div>Mon–Sat, 8:00 – 18:00<br>© <span id="yr"></span> Sparkle. Portfolio demo project.</div></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const TYPES=[['Standard',1],['Deep',1.5],['Move in / out',1.8]];
+const EXTRAS=[['Inside oven',25],['Inside fridge',20],['Windows',35],['Laundry',15]];
+const FREQ=[['One-time',0],['Monthly',10],['Every 2 weeks',15],['Weekly',20]];
+const c={type:0,beds:2,baths:1,extras:new Set(),freq:0};
+let quote={};
+
+function calc(){
+  const base=(45+c.beds*22+c.baths*18)*TYPES[c.type][1];
+  const ex=[...c.extras].reduce((s,i)=>s+EXTRAS[i][1],0);
+  const save=Math.round((base+ex)*FREQ[c.freq][1]/100);
+  const total=Math.round(base+ex-save);
+  const hours=Math.max(2,Math.round(((1+c.beds*.6+c.baths*.5)*TYPES[c.type][1]+c.extras.size*.4)*2)/2);
+  quote={base:Math.round(base),ex,save,total,hours};
+  const b=(k,i,on,t)=>`<button type="button" class="opt ${on?'on':''}" data-k="${k}" data-i="${i}" aria-pressed="${on}">${t}</button>`;
+  $('#cType').innerHTML=TYPES.map((t,i)=>b('type',i,i===c.type,t[0])).join('');
+  $('#cExtra').innerHTML=EXTRAS.map((x,i)=>b('extra',i,c.extras.has(i),`${x[0]} <small>+$${x[1]}</small>`)).join('');
+  $('#cFreq').innerHTML=FREQ.map((x,i)=>b('freq',i,i===c.freq,x[0]+(x[1]?` <small>−${x[1]}%</small>`:''))).join('');
+  $('#bedV').textContent=c.beds;$('#bathV').textContent=c.baths;
+  $('#qPrice').textContent='$'+total;
+  $('#qTime').textContent=`about ${hours} hours · ${FREQ[c.freq][0].toLowerCase()}`;
+  const rows=[[`${TYPES[c.type][0]} clean, ${c.beds} bed / ${c.baths} bath`,'$'+quote.base]];
+  [...c.extras].sort().forEach(i=>rows.push([EXTRAS[i][0],'+$'+EXTRAS[i][1]]));
+  if(save)rows.push([`${FREQ[c.freq][0]} discount`,'−$'+save,'save']);
+  $('#qList').innerHTML=rows.map(r=>`<li class="${r[2]||''}"><span>${r[0]}</span><span>${r[1]}</span></li>`).join('');
+  $('#summary').innerHTML=rows.map(r=>`<div><span>${r[0]}</span><span>${r[1]}</span></div>`).join('')+`<div class="t"><span>Total per visit</span><span>$${total}</span></div>`;
+}
+$('.calc').addEventListener('click',e=>{const o=e.target.closest('.opt');if(!o)return;const i=+o.dataset.i,k=o.dataset.k;
+  if(k==='extra')c.extras.has(i)?c.extras.delete(i):c.extras.add(i);else c[k]=i;calc()});
+$$('.svc').forEach(a=>a.addEventListener('click',()=>{c.type=+a.dataset.type;calc()}));
+$('#beds').oninput=e=>{c.beds=+e.target.value;calc()};
+$('#baths').oninput=e=>{c.baths=+e.target.value;calc()};
+
+/* booking */
+const form=$('#form'),F=form.elements;
+const iso=d=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const tomorrow=new Date(Date.now()+864e5);
+F.date.min=iso(tomorrow);
+$('#slot').textContent=tomorrow.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'})+', 10:00';
+const rules={
+  fname:v=>v.length>1||'Please enter your name',
+  phone:v=>v.replace(/\D/g,'').length>=7||'Please enter a valid phone number',
+  email:v=>/^\S+@\S+\.\S+$/.test(v)||'Please enter a valid email',
+  addr:v=>v.length>4||'Please enter your address',
+  date:v=>!v?'Please choose a date':v<F.date.min?'Please choose a future date':new Date(v+'T12:00').getDay()===0?'We are closed on Sundays':true
+};
+function check(k){const r=rules[k](F[k].value.trim());F[k].classList.toggle('bad',r!==true);F[k].nextElementSibling.textContent=r===true?'':r;return r===true}
+Object.keys(rules).forEach(k=>F[k].addEventListener('blur',()=>check(k)));
+form.addEventListener('submit',e=>{e.preventDefault();
+  const ok=Object.keys(rules).map(check).every(Boolean);
+  if(!ok){form.querySelector('.bad').focus();return}
+  const d=new Date(F.date.value+'T12:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+  $('#okText').textContent=`${F.fname.value.trim()}, your ${TYPES[c.type][0].toLowerCase()} clean is set for ${d}, ${F.time.value}. Total: $${quote.total}. We sent the details to ${F.email.value.trim()}.`;
+  $('#bookBox').classList.add('done');
+});
+$('#again').onclick=()=>{form.reset();$('#bookBox').classList.remove('done')};
+
+/* nav + effects */
+const header=$('header'),burger=$('.burger');
+burger.onclick=()=>burger.setAttribute('aria-expanded',header.classList.toggle('open'));
+$$('.menu a').forEach(a=>a.onclick=()=>header.classList.remove('open'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.reveal').forEach(el=>io.observe(el));
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);
+  const end=+e.target.dataset.count,t0=performance.now();
+  (function tick(t){const k=Math.min((t-t0)/1200,1);e.target.textContent=Math.round(end*k).toLocaleString('en-US');if(k<1)requestAnimationFrame(tick)})(t0)}));
+$$('[data-count]').forEach(el=>cio.observe(el));
+$('#yr').textContent=new Date().getFullYear();
+calc();
+</script>
+</body>
+</html>

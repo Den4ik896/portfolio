@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verde — house plants delivered</title>
+<meta name="description" content="Verde plant shop: healthy house plants, pots and care tools delivered to your door.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5ef;--card:#fff;--ink:#1c2a22;--muted:#66756c;--green:#2f6b4a;--green-d:#234f37;--soft:#e4ecdf;--sale:#c7502f;--line:#e2e0d6;--r:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+h1,h2,h3.t{font-family:Fraunces,serif;line-height:1.12}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;border:0;background:var(--green);color:#fff;font-weight:600;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--green-d)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.line{background:none;border:1.5px solid var(--ink);color:var(--ink)}
+.btn.line:hover{background:var(--ink);color:#fff}
+.btn.full{width:100%}
+:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+
+.bar{background:var(--ink);color:#e8efe6;text-align:center;font-size:.85rem;padding:8px 12px}
+header{position:sticky;top:0;z-index:30;background:rgba(247,245,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:16px;height:68px}
+.logo{font:700 1.5rem Fraunces,serif;color:var(--green)}
+.search{flex:1;max-width:420px;margin:0 auto;position:relative}
+.search input{width:100%;padding:11px 16px 11px 40px;border-radius:999px;border:1px solid var(--line);background:#fff}
+.search::before{content:"⌕";position:absolute;left:15px;top:50%;transform:translateY(-52%);font-size:1.2rem;color:var(--muted)}
+.icon{position:relative;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:1.1rem}
+.icon b{position:absolute;top:-4px;right:-4px;background:var(--green);color:#fff;font-size:.7rem;min-width:19px;height:19px;border-radius:999px;display:grid;place-items:center;padding:0 4px}
+.icon.on{background:#fbe6df;border-color:#f1c2b4}
+
+.hero{margin:26px 0;border-radius:28px;background:linear-gradient(120deg,#dce8d6,#f1ead8);padding:56px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;overflow:hidden}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:14px}
+.hero p{color:var(--muted);font-size:1.08rem;max-width:440px;margin-bottom:24px}
+.hero .big{font-size:clamp(7rem,16vw,12rem);text-align:center;line-height:1;filter:drop-shadow(0 20px 20px rgba(47,107,74,.25));animation:sway 5s ease-in-out infinite;transform-origin:bottom}
+.heroimg{width:100%;max-width:340px;aspect-ratio:1;object-fit:cover;border-radius:28px;justify-self:center;box-shadow:0 30px 50px -25px rgba(47,107,74,.5)}
+.perks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:44px}
+.perk{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;font-size:.9rem;color:var(--muted)}
+.perk b{display:block;color:var(--ink);font-size:.95rem}
+
+.shop{display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:start;padding-bottom:70px}
+.filters{position:sticky;top:88px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.filters h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:18px 0 10px}
+.filters h3:first-child{margin-top:0}
+.check{display:flex;align-items:center;gap:10px;padding:5px 0;cursor:pointer}
+.check input{width:17px;height:17px;accent-color:var(--green)}
+.check span{margin-left:auto;color:var(--muted);font-size:.85rem}
+input[type=range]{width:100%;accent-color:var(--green)}
+.link{background:none;border:0;color:var(--green);font-weight:600;cursor:pointer;margin-top:16px;text-decoration:underline}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.top h2{font-size:1.9rem}
+.top select{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#fff}
+#count{color:var(--muted);font-size:.9rem}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:.2s;animation:in .3s ease both}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 30px -18px rgba(28,42,34,.35)}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+.tile{position:relative;aspect-ratio:1/.9;display:grid;place-items:center;font-size:5rem;cursor:pointer;border:0;width:100%}
+.tile{overflow:hidden}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.4s}
+.card:hover .tile img{transform:scale(1.06)}
+.badge{position:absolute;left:12px;top:12px;font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--ink);color:#fff}
+.badge.sale{background:var(--sale)}
+.heart{position:absolute;right:10px;top:10px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.85);cursor:pointer;font-size:1rem;color:#b7b7ad}
+.heart.on{color:var(--sale)}
+.info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.info small{color:var(--muted)}
+.info h3{font-size:1rem}
+.price{font-weight:600;font-size:1.05rem;margin-top:auto;padding-top:8px;display:flex;gap:8px;align-items:baseline}
+.price s{color:var(--muted);font-weight:400;font-size:.9rem}
+.price .now{color:var(--sale)}
+.info .btn{margin-top:10px;padding:10px}
+.none{grid-column:1/-1;text-align:center;padding:50px 0;color:var(--muted)}
+
+.news{background:var(--green);color:#fff;border-radius:28px;padding:44px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:60px}
+.news h2{font-size:1.8rem}
+.news form{display:flex;gap:8px;flex:1;max-width:440px;min-width:260px}
+.news input{flex:1;padding:13px 18px;border-radius:999px;border:0;color:var(--ink)}
+.news .btn{background:var(--ink)}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+dialog{border:0;border-radius:24px;padding:0;width:min(720px,94vw);margin:auto;color:var(--ink);max-height:92vh}
+dialog::backdrop{background:rgba(28,42,34,.55);backdrop-filter:blur(3px)}
+.x{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.9);cursor:pointer;z-index:2}
+.qv{display:grid;grid-template-columns:1fr 1fr}
+.qv .tile{aspect-ratio:auto;min-height:320px;font-size:8rem;cursor:default}
+.qv .body{padding:32px;display:flex;flex-direction:column;gap:10px}
+.qv h2{font-size:1.8rem}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0}
+.specs div{background:var(--bg);border-radius:12px;padding:10px 12px;font-size:.85rem;color:var(--muted)}
+.specs b{display:block;color:var(--ink)}
+.qty{display:inline-flex;align-items:center;gap:10px}
+.qty button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer}
+.buy{display:flex;gap:12px;align-items:center;margin-top:auto}
+
+.shade{position:fixed;inset:0;background:rgba(28,42,34,.5);opacity:0;pointer-events:none;transition:.25s;z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100vw);background:var(--bg);z-index:41;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column}
+.open .shade{opacity:1;pointer-events:auto}.open .drawer{transform:none}
+.dtop{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid var(--line)}
+.dbody{flex:1;overflow:auto;padding:14px 22px}
+.dbot{padding:18px 22px;border-top:1px solid var(--line);background:#fff}
+.line{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.line .th{width:56px;height:56px;border-radius:12px;overflow:hidden}
+.line .th img{width:100%;height:100%;object-fit:cover;display:block}
+.line small{color:var(--muted)}
+.rm{background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline;font-size:.8rem}
+.ship{font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.meter{height:6px;background:var(--soft);border-radius:9px;overflow:hidden;margin-top:6px}
+.meter i{display:block;height:100%;background:var(--green);transition:.3s}
+.sum{display:flex;justify-content:space-between;padding:3px 0;color:var(--muted)}
+.sum.t{color:var(--ink);font-weight:600;font-size:1.2rem;margin:6px 0 14px}
+.co{padding:30px;display:grid;gap:12px}
+.co label{font-weight:600;font-size:.88rem;display:block}
+.co input{width:100%;margin-top:5px;padding:12px 14px;border-radius:12px;border:1px solid var(--line)}
+.co input.bad{border-color:var(--sale)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{color:var(--sale);font-size:.8rem;font-weight:500;min-height:1em;display:block}
+.thanks{text-align:center;padding:50px 30px}
+.thanks div{font-size:4rem}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,80px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;font-weight:600;transition:.3s;z-index:60}
+.toast.on{transform:translate(-50%,0)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:34px}
+  .heroimg{display:none}
+  .perks{grid-template-columns:1fr 1fr}
+  .shop{grid-template-columns:1fr}
+  .filters{position:static}
+  .qv{grid-template-columns:1fr}.qv .tile{min-height:200px}
+  .logo{font-size:1.2rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">Free shipping on orders over $50 · 30-day healthy plant guarantee</div>
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">Verde</a>
+    <div class="search"><input id="q" type="search" placeholder="Search plants, pots, tools…" aria-label="Search products"></div>
+    <button class="icon" id="wishBtn" aria-label="Show wishlist" aria-pressed="false">♥<b id="wishN">0</b></button>
+    <button class="icon" id="cartBtn" aria-label="Open cart">🛒<b id="cartN">0</b></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <h1>Bring the outside in.</h1>
+      <p>Hand-picked house plants, grown in our own greenhouse and delivered in protective packaging — with a care card for each one.</p>
+      <a href="#shop" class="btn">Shop plants</a>
+    </div>
+    <img class="heroimg" src="https://images.unsplash.com/photo-1545239705-1564e58b9e4a?w=700&h=700&fit=crop&q=75&auto=format" alt="Fiddle leaf fig in a white pot">
+  </section>
+
+  <div class="perks">
+    <div class="perk"><b>🚚 Fast delivery</b>2–4 business days</div>
+    <div class="perk"><b>🌱 Healthy guarantee</b>30 days or we replace it</div>
+    <div class="perk"><b>📦 Safe packaging</b>Plastic-free boxes</div>
+    <div class="perk"><b>💬 Plant care help</b>Chat with our growers</div>
+  </div>
+
+  <section class="shop" id="shop">
+    <aside class="filters" aria-label="Filters">
+      <h3>Category</h3><div id="cats"></div>
+      <h3>Max price: <span id="maxV"></span></h3>
+      <input type="range" id="max" min="5" max="80" step="1" value="80" aria-label="Maximum price">
+      <h3>Care level</h3>
+      <label class="check"><input type="checkbox" id="easy"> Easy care only</label>
+      <label class="check"><input type="checkbox" id="sale"> On sale</label>
+      <label class="check"><input type="checkbox" id="pet"> Pet friendly</label>
+      <button class="link" id="reset">Clear filters</button>
+    </aside>
+    <div>
+      <div class="top">
+        <div><h2 id="title">All products</h2><span id="count"></span></div>
+        <select id="sort" aria-label="Sort products"><option value="feat">Featured</option><option value="asc">Price: low to high</option><option value="desc">Price: high to low</option><option value="rate">Top rated</option></select>
+      </div>
+      <div id="grid"></div>
+    </div>
+  </section>
+
+  <section class="news">
+    <div><h2>Get 10% off your first order</h2><p>Plant care tips once a month. No spam.</p></div>
+    <form id="news"><input type="email" required placeholder="you@example.com" aria-label="Email"><button class="btn">Subscribe</button></form>
+  </section>
+</main>
+<footer class="wrap"><span>© <span id="yr"></span> Verde Plant Shop · Portfolio demo project</span><span>hello@verde.example · +1 (555) 014-7788</span></footer>
+
+<dialog id="quick"><button class="x" data-close aria-label="Close">✕</button><div class="qv" id="qv"></div></dialog>
+<dialog id="checkout"><button class="x" data-close aria-label="Close">✕</button><div id="coBody"></div></dialog>
+
+<div class="shade" id="shade"></div>
+<aside class="drawer" aria-label="Cart">
+  <div class="dtop"><h2>Your cart</h2><button class="x" id="closeCart" style="position:static" aria-label="Close cart">✕</button></div>
+  <div class="dbody" id="lines"></div>
+  <div class="dbot">
+    <div class="ship"><span id="shipMsg"></span><div class="meter"><i id="meter"></i></div></div>
+    <div class="sum"><span>Subtotal</span><span id="sub"></span></div>
+    <div class="sum"><span>Shipping</span><span id="shipV"></span></div>
+    <div class="sum t"><span>Total</span><span id="tot"></span></div>
+    <button class="btn full" id="goCheckout">Checkout</button>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const P=[
+ {id:1,name:'Monstera Deliciosa',cat:'Indoor',price:38,old:48,rate:4.8,e:'🌿',bg:'#dbe8d5',light:'Bright, indirect',water:'Weekly',easy:1,pet:0,desc:'The iconic split-leaf plant. Grows fast and forgives the occasional missed watering.'},
+ {id:2,name:'Snake Plant',cat:'Indoor',price:24,rate:4.9,e:'🎍',bg:'#e3e9cf',light:'Low to bright',water:'Every 2–3 weeks',easy:1,pet:0,desc:'Nearly indestructible. Thrives on neglect and cleans the air while it does.'},
+ {id:3,name:'Fiddle Leaf Fig',cat:'Indoor',price:62,rate:4.3,e:'🌳',bg:'#d9e6dc',light:'Bright, indirect',water:'Weekly',easy:0,pet:0,isNew:1,desc:'A statement tree with large violin-shaped leaves. Loves a stable, sunny spot.'},
+ {id:4,name:'Parlor Palm',cat:'Indoor',price:29,rate:4.6,e:'🌴',bg:'#e6ecd6',light:'Low to medium',water:'Weekly',easy:1,pet:1,desc:'A compact, feathery palm that is safe for cats and dogs.'},
+ {id:5,name:'Golden Barrel Cactus',cat:'Succulents',price:16,rate:4.7,e:'🌵',bg:'#efe6cf',light:'Full sun',water:'Monthly',easy:1,pet:0,desc:'A round, golden-spined cactus that asks for almost nothing.'},
+ {id:6,name:'Aloe Vera',cat:'Succulents',price:14,old:18,rate:4.8,e:'🪴',bg:'#dfe9d8',light:'Bright',water:'Every 3 weeks',easy:1,pet:0,desc:'Useful and good-looking. Keep on a sunny windowsill.'},
+ {id:7,name:'Echeveria Trio',cat:'Succulents',price:21,rate:4.5,e:'🌸',bg:'#f1e1e0',light:'Bright',water:'Every 2 weeks',easy:1,pet:1,isNew:1,desc:'Three rosette succulents in pastel shades, pet friendly.'},
+ {id:8,name:'Lavender',cat:'Outdoor',price:12,rate:4.4,e:'🪻',bg:'#e5e0ef',light:'Full sun',water:'Weekly',easy:1,pet:0,desc:'Fragrant purple blooms all summer. Great for balconies.'},
+ {id:9,name:'Olive Tree',cat:'Outdoor',price:74,old:89,rate:4.6,e:'🫒',bg:'#e2e6d3',light:'Full sun',water:'Weekly',easy:0,pet:1,desc:'A Mediterranean classic for patios and bright rooms.'},
+ {id:10,name:'Herb Garden Kit',cat:'Outdoor',price:26,rate:4.2,e:'🌱',bg:'#dcebd7',light:'Bright',water:'Every 2 days',easy:1,pet:1,desc:'Basil, mint and parsley seedlings with a wooden planter.'},
+ {id:11,name:'Ceramic Pot, 15 cm',cat:'Pots & tools',price:19,rate:4.7,e:'🏺',bg:'#efe2d3',light:'—',water:'—',easy:1,pet:1,desc:'Hand-glazed stoneware pot with drainage hole and saucer.'},
+ {id:12,name:'Metal Watering Can',cat:'Pots & tools',price:34,old:42,rate:4.9,e:'🚿',bg:'#f0e8cc',light:'—',water:'—',easy:1,pet:1,desc:'A galvanized steel can with a long spout for precise watering.'}
+];
+const IMG={1:'1653404809389-f370ea4310dd',2:'1774569036947-3d61460130bd',3:'1545239705-1564e58b9e4a',4:'1687269111857-3b398711c2f4',5:'1768726094465-81a6d4e7159a',6:'1509423350716-97f9360b4e09',7:'1668508380767-a13f204bde1c',8:'1779440158884-fd28651b15dc',9:'1762542531473-ec9f86e0d86e',10:'1781784207590-b3d2cbf57170',11:'1572725350945-a2d24faa89b0',12:'1786459558726-2b672982ba55'};
+const pic=(p,w=600)=>`<img src="https://images.unsplash.com/photo-${IMG[p.id]}?w=${w}&h=${w}&fit=crop&q=75&auto=format" alt="${p.name}" loading="lazy">`;
+const FREE=50,SHIP=6;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const fmt=n=>'$'+n.toFixed(2);
+const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+const store=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let cart=load('verde-cart',{}),wish=new Set(load('verde-wish',[]));
+const f={cats:new Set(),max:80,easy:false,sale:false,pet:false,q:'',sort:'feat',wish:false};
+
+const CATS=[...new Set(P.map(p=>p.cat))];
+$('#cats').innerHTML=CATS.map(c=>`<label class="check"><input type="checkbox" value="${c}"> ${c}<span>${P.filter(p=>p.cat===c).length}</span></label>`).join('');
+
+function priceHTML(p){return p.old?`<span class="now">${fmt(p.price)}</span><s>${fmt(p.old)}</s>`:fmt(p.price)}
+function render(){
+  let list=P.filter(p=>(!f.cats.size||f.cats.has(p.cat))&&p.price<=f.max&&(!f.easy||p.easy)&&(!f.sale||p.old)&&(!f.pet||p.pet)&&(!f.wish||wish.has(p.id))&&p.name.toLowerCase().includes(f.q));
+  const s={asc:(a,b)=>a.price-b.price,desc:(a,b)=>b.price-a.price,rate:(a,b)=>b.rate-a.rate}[f.sort];
+  if(s)list.sort(s);
+  $('#title').textContent=f.wish?'Your wishlist':'All products';
+  $('#count').textContent=`${list.length} of ${P.length} products`;
+  $('#maxV').textContent='$'+f.max;
+  $('#grid').innerHTML=list.length?list.map(p=>`<article class="card">
+    <div style="position:relative"><button class="tile" style="background:${p.bg}" data-view="${p.id}" aria-label="Quick view: ${p.name}">${pic(p)}</button>
+      ${p.old?`<span class="badge sale">−${Math.round((1-p.price/p.old)*100)}%</span>`:p.isNew?'<span class="badge">New</span>':''}
+      <button class="heart ${wish.has(p.id)?'on':''}" data-wish="${p.id}" aria-label="Add ${p.name} to wishlist" aria-pressed="${wish.has(p.id)}">♥</button></div>
+    <div class="info"><small>${p.cat} · ★ ${p.rate}</small><h3>${p.name}</h3>
+      <div class="price">${priceHTML(p)}</div><button class="btn" data-add="${p.id}">Add to cart</button></div></article>`).join('')
+    :'<p class="none">No products match these filters.</p>';
+  $('#wishN').textContent=wish.size;
+}
+
+function renderCart(){
+  const ids=Object.keys(cart);let sub=0,n=0;
+  $('#lines').innerHTML=ids.length?ids.map(id=>{const p=P.find(x=>x.id==id),q=cart[id];sub+=p.price*q;n+=q;
+    return `<div class="line"><div class="th" style="background:${p.bg}">${pic(p,120)}</div><div><b>${p.name}</b><br><small>${fmt(p.price)} each</small><br><button class="rm" data-rm="${id}">Remove</button></div>
+      <div style="text-align:right"><div class="qty"><button data-ch="-1" data-id="${id}" aria-label="Less">−</button>${q}<button data-ch="1" data-id="${id}" aria-label="More">+</button></div><div style="margin-top:6px;font-weight:600">${fmt(p.price*q)}</div></div></div>`}).join('')
+    :'<p class="none">Your cart is empty.</p>';
+  const ship=!sub||sub>=FREE?0:SHIP;
+  $('#shipMsg').textContent=!sub?`Free shipping over ${fmt(FREE)}`:ship?`${fmt(FREE-sub)} away from free shipping`:'You unlocked free shipping 🎉';
+  $('#meter').style.width=Math.min(100,sub/FREE*100)+'%';
+  $('#sub').textContent=fmt(sub);$('#shipV').textContent=ship?fmt(ship):'Free';$('#tot').textContent=fmt(sub+ship);
+  $('#cartN').textContent=n;$('#goCheckout').disabled=!n;
+  store('verde-cart',cart);return{sub,ship,total:sub+ship,n};
+}
+function add(id,q=1){cart[id]=(cart[id]||0)+q;if(cart[id]<=0)delete cart[id];renderCart()}
+
+let qn=1;
+function quick(id){const p=P.find(x=>x.id==id);qn=1;
+  $('#qv').innerHTML=`<div class="tile" style="background:${p.bg}">${pic(p)}</div>
+   <div class="body"><small style="color:var(--muted)">${p.cat} · ★ ${p.rate}</small><h2>${p.name}</h2><div class="price" style="font-size:1.3rem">${priceHTML(p)}</div><p style="color:var(--muted)">${p.desc}</p>
+   <div class="specs"><div><b>Light</b>${p.light}</div><div><b>Water</b>${p.water}</div><div><b>Care</b>${p.easy?'Easy':'Needs attention'}</div><div><b>Pets</b>${p.pet?'Pet friendly':'Keep away from pets'}</div></div>
+   <div class="buy"><div class="qty"><button data-qn="-1" aria-label="Less">−</button><b id="qn">1</b><button data-qn="1" aria-label="More">+</button></div><button class="btn full" data-qadd="${p.id}">Add to cart</button></div></div>`;
+  $('#quick').showModal();
+}
+$$('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d||e.target.closest('[data-close]'))d.close()}));
+$('#quick').addEventListener('click',e=>{const a=e.target.closest('[data-qn]'),b=e.target.closest('[data-qadd]');
+  if(a){qn=Math.max(1,qn+ +a.dataset.qn);$('#qn').textContent=qn}
+  if(b){add(b.dataset.qadd,qn);$('#quick').close();toast('Added to cart')}});
+
+$('#grid').addEventListener('click',e=>{
+  const a=e.target.closest('[data-add]'),w=e.target.closest('[data-wish]'),v=e.target.closest('[data-view]');
+  if(a){add(a.dataset.add);toast('Added to cart')}
+  else if(w){const id=+w.dataset.wish;wish.has(id)?wish.delete(id):wish.add(id);store('verde-wish',[...wish]);render()}
+  else if(v)quick(v.dataset.view);
+});
+$('#lines').addEventListener('click',e=>{const c=e.target.closest('[data-ch]'),r=e.target.closest('[data-rm]');
+  if(c)add(c.dataset.id,+c.dataset.ch);if(r){delete cart[r.dataset.rm];renderCart()}});
+
+$('#cats').onchange=e=>{e.target.checked?f.cats.add(e.target.value):f.cats.delete(e.target.value);render()};
+$('#max').oninput=e=>{f.max=+e.target.value;render()};
+['easy','sale','pet'].forEach(k=>$('#'+k).onchange=e=>{f[k]=e.target.checked;render()});
+$('#q').oninput=e=>{f.q=e.target.value.trim().toLowerCase();render()};
+$('#sort').onchange=e=>{f.sort=e.target.value;render()};
+$('#reset').onclick=()=>{f.cats.clear();Object.assign(f,{max:80,easy:false,sale:false,pet:false,q:'',wish:false});
+  $$('.filters input[type=checkbox]').forEach(c=>c.checked=false);$('#max').value=80;$('#q').value='';$('#wishBtn').classList.remove('on');render()};
+$('#wishBtn').onclick=e=>{f.wish=!f.wish;e.currentTarget.classList.toggle('on',f.wish);e.currentTarget.setAttribute('aria-pressed',f.wish);render();$('#shop').scrollIntoView()};
+
+const openCart=()=>document.body.classList.add('open'),closeCart=()=>document.body.classList.remove('open');
+$('#cartBtn').onclick=openCart;$('#closeCart').onclick=closeCart;$('#shade').onclick=closeCart;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart()});
+
+$('#goCheckout').onclick=()=>{const t=renderCart();closeCart();
+  $('#coBody').innerHTML=`<form class="co" id="coForm" novalidate><h2>Checkout</h2><p style="color:var(--muted)">${t.n} item${t.n>1?'s':''} · total ${fmt(t.total)} · pay on delivery</p>
+    <label>Email<input name="email" type="email" autocomplete="email"><span class="err"></span></label>
+    <label>Full name<input name="fname" autocomplete="name"><span class="err"></span></label>
+    <label>Address<input name="addr" autocomplete="street-address"><span class="err"></span></label>
+    <div class="two"><label>City<input name="city" autocomplete="address-level2"><span class="err"></span></label><label>ZIP code<input name="zip" autocomplete="postal-code" inputmode="numeric"><span class="err"></span></label></div>
+    <button class="btn full">Place order · ${fmt(t.total)}</button></form>`;
+  $('#checkout').showModal();
+};
+$('#coBody').addEventListener('submit',e=>{e.preventDefault();const F=e.target.elements;
+  const rules={email:v=>/^\S+@\S+\.\S+$/.test(v)||'Enter a valid email',fname:v=>v.length>1||'Enter your name',addr:v=>v.length>4||'Enter your address',city:v=>v.length>1||'Enter your city',zip:v=>/^\d{4,6}$/.test(v)||'Enter a valid ZIP'};
+  let ok=true;for(const k in rules){const r=rules[k](F[k].value.trim());F[k].classList.toggle('bad',r!==true);F[k].nextElementSibling.textContent=r===true?'':r;if(r!==true)ok=false}
+  if(!ok)return;
+  const email=F.email.value.trim();
+  $('#coBody').innerHTML='<div class="thanks"><div>🌿</div><h2>Order confirmed!</h2><p style="color:var(--muted);margin:10px 0 22px">Order #V-'+Math.floor(10000+Math.random()*90000)+'. A confirmation was sent to <b id="em"></b>.</p><button class="btn" data-close>Continue shopping</button></div>';
+  $('#em').textContent=email;cart={};renderCart();
+});
+$('#news').onsubmit=e=>{e.preventDefault();e.target.reset();toast('Thanks! Check your inbox for 10% off')};
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1800)}
+$('#yr').textContent=new Date().getFullYear();
+render();renderCart();
+</script>
+</body>
+</html>
